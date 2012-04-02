@@ -31,9 +31,34 @@ def known():
 		except:
 			print i
 	
+def current():
+	data = data_loader.load_data()
+
+	if len(data['current_version']) > 0:
+		print "Current installed version:"
+		print "\t" + colors.green(data['current_version'])
+	else:
+		print colors.red("No current version installed")
+		print "Use " + colors.yellow("nvm install <version>") + " to install"
+
+def installed():
+	data = data_loader.load_data()
+
+	if len(data['installed_versions']) > 0:
+		for i in data['installed_version']:
+			if i == data['current_version']:
+				print colors.green(i)
+			else:
+				print colors.yellow(i)
+	else:
+		print colors.red("No versions installed")
+		print "Use " + colors.yellow("nvm install <version>") + " to install"
+		
 
 available_args = {
-	'known': known
+	'known': known,
+	'installed': installed,
+	'current': current
 }
 
 tags_url = 'https://api.github.com/repos/joyent/node/tags'
@@ -44,7 +69,7 @@ if __name__ == '__main__':
 
 	if(len(args) == 0):
 		# list installed versions of node as well as the current
-		print "foobar"
+		installed()
 	elif len(args) == 1:
 		if(args[0] in available_args):
 			available_args[args[0]]()

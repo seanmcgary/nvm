@@ -15,7 +15,6 @@ def npm(args):
 	print "npm"
 
 def list(args):
-	print "list"
 	exec_args = ['./nvm-list.py'] + args
 	os.execvp(exec_args[0], exec_args)
 
