@@ -1,9 +1,35 @@
+#!/usr/bin/python
+
 import argparse
 import sys
+import os
+
+def use(args):
+	exec_args = ['./nvm-use.py'] + args
+	os.execvp(exec_args[0], exec_args);
+
+def install(args):
+	print "install"
+
+def npm(args):
+	print "npm"
+
+def list(args):
+	print "list"
+	exec_args = ['./nvm-list.py'] + args
+	os.execvp(exec_args[0], exec_args)
+
+args = {
+	'use': use,
+	'install': install,
+	'npm': npm,
+	'list': list
+}
 
 if __name__ == "__main__":
 	
-	parser = argparse.ArgumentParser();
-
-	parser.add_argument
+	if(sys.argv[1] in args):
+		args[sys.argv[1]](sys.argv[2:len(sys.argv)])
+	else:
+		print "bad command"
 

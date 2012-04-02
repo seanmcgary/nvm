@@ -9,3 +9,5 @@ Easily manage version of Node.js as well as modules
 ### ```nvm-use```
 
 ### ```nvm-install```
+
+### ```nvm-module-install```
