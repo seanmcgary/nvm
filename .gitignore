@@ -1,2 +1,9 @@
+#ignore these
 .*.swp
 *.pyc
+modules/*
+versions/*
+
+#but not these
+!modules/README.mkdn
+!versions/README.mkdn
