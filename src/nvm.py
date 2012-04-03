@@ -6,10 +6,11 @@ import os
 
 def use(args):
 	exec_args = ['./nvm-use.py'] + args
-	os.execvp(exec_args[0], exec_args);
+	os.execvp(exec_args[0], exec_args)
 
 def install(args):
-	print "install"
+	exec_args = ['./nvm-install.py'] + args
+	os.execvp(exec_args[0], exec_args)
 
 def npm(args):
 	print "npm"

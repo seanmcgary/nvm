@@ -1,15 +1,15 @@
 #!/usr/bin/python
 import sys
-sys.path.append('./lib')
+import os
+sys.path.append(os.environ['NVM_PATH'] + '/src/lib')
 
-import requests
-import json
 import data_loader 
 import colors
+import github
 
 def known():
 
-	req = json.loads(requests.get(tags_url).text)
+	req = github.get_tags()
 	versions = []
 	for i in req:
 		if i['name'][0] == 'v':

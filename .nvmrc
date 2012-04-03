@@ -1,0 +1,5 @@
+PATH=$PATH:/Users/seanmcgary/.nvm/bin
+export NVM_VERSIONS=/Users/seanmcgary/.nvm/versions
+export NVM_MODULES=/Users/seanmcgary/.nvm/modules
+export NODE_PATH=/Users/seanmcgary/.nvm/modules/current
+export NVM_NODE_PATH=/Users/seanmcgary/.nvm/modules/current

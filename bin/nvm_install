@@ -1,0 +1,10 @@
+#!/usr/bin/python
+import sys
+import os
+sys.path.append(os.environ['NVM_PATH'] + '/src/lib')
+
+import rc_parser
+
+
+if __name__ == '__main__':
+	rc_parser.write_rc()

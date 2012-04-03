@@ -1,6 +1,7 @@
 import json
+import os
 
-data_path = '.nvm-data'
+data_path = os.environ['NVM_PATH'] + '/src/.nvm-data'
 
 def load_data():
 
