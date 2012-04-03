@@ -1,0 +1,8 @@
+#Change log
+
+## v0.0.1
+- nvm-install successfully installs and symlinks node
+- nvm-list
+	- known: shows all node tags. pulls from github
+	- installed: shows all installed versions
+	- current: shows the current version

@@ -1,0 +1,29 @@
+#!/usr/bin/python
+import sys
+import os
+sys.path.append(os.environ['NVM_PATH'] + '/src/lib')
+
+import colors
+import data_loader
+import version_manager
+
+if __name__ == '__main__':
+	# usage: nvm-use version_number
+	# TODO - argument error checking
+	args = sys.argv[1:len(sys.argv)]
+
+	ver = args[0]
+	data = data_loader.load_data()
+
+	try:
+		data['installed_versions'].index(ver)
+
+		version_manager.set_version(ver, data)
+
+		data_loader.save_data(data)
+
+		print colors.green("Now using " + ver)
+
+	except:
+		print colors.yellow(ver + " is not currently installed")
+		exit()
