@@ -5,5 +5,5 @@ modules/*
 versions/*
 
 #but not these
-!modules/README.mkdn
-!versions/README.mkdn
+!./modules/README.mkdn
+!./versions/README.mkdn
