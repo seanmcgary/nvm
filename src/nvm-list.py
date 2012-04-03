@@ -45,7 +45,7 @@ def installed():
 	data = data_loader.load_data()
 
 	if len(data['installed_versions']) > 0:
-		for i in data['installed_version']:
+		for i in data['installed_versions']:
 			if i == data['current_version']:
 				print colors.green(i)
 			else:
