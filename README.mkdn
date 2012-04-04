@@ -2,6 +2,31 @@
 
 Easily manage version of Node.js as well as modules
 
+NOTE: Currently nvm will only work for a single user. Installing NodeJS and modules for the global machine and users is coming soon.
+
+##Requirements
+
+- Python 2.7
+	- requests (available through easy_install an pip)
+
+##Installation
+
+Clone nvm to ~/.nvm
+
+```git clone https://github.com/seanmcgary/nvm ~/.nvm```
+
+Next, add the following to your shells rc file
+
+```
+export NVM_PATH=$HOME/.nvm
+source $NVM_PATH/.nvmrc
+```
+
+Run the nvm_install script located in ```.nvm/bin/nvm_install```
+
+After running, make sure source your shells rc file!
+
+
 ## Components
 
 ### ```nvm```
