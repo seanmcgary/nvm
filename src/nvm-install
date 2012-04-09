@@ -12,6 +12,8 @@ import version_manager
 
 
 if __name__ == '__main__':
+	
+	#subprocess.call('whoami', shell=True)
 
 	if len(sys.argv) < 2:
 		print 'Useage: ' + colors.yellow('nvm-install <tag>')
@@ -37,20 +39,24 @@ if __name__ == '__main__':
 	
 	#install the version
 	
-	#create the right dir
+
+
 	#os.system("mkdir " + os.environ['NVM_VERSIONS'] + '/' + tag)
 	clone_path = os.environ['NVM_VERSIONS'] + '/' + tag
 	
-	print colors.green("Cloning node.js to " + clone_path + "...") + "\n"
-
-	clone = "git clone https://github.com/joyent/node " + clone_path
-	if(subprocess.call(clone, shell=True) != 0):
-		print colors.red("Failed to clone repository")
-		exit()	
+	# check to see if its already been cloned and just not built
+	if(os.path.exists(clone_path) != True):
 	
-	symlink = ''
+		print colors.green("Cloning node.js to " + clone_path + "...") + "\n"
 
-	version_manager.set_version(tag, data)
+		clone = "git clone https://github.com/joyent/node " + clone_path
+		if(subprocess.call(clone, shell=True) != 0):
+			print colors.red("Failed to clone repository")
+			exit()
+	
+		symlink = ''
+	
+		version_manager.set_version(tag, data)
 
 	print colors.green("Checking out tag " + tag + "...") + "\n"
 
@@ -61,12 +67,16 @@ if __name__ == '__main__':
 
 	print colors.green("Building Nodejs...") + "\n"
 
-	make = "cd " + clone_path + " && ./configure && make && make install"
+	make = "cd " + clone_path + " && ./configure && make"
 	if(subprocess.call(make, shell=True) != 0):
 		print colors.red("Failed to configure and make")
 		exit()
 
-	data['installed_versions'].append(tag)
+	# if we're rebuilding, we want to make sure not to add the tag again
+	try:
+		data['installed_versions'].index(tag)
+	except:
+		data['installed_versions'].append(tag)
 
 	data_loader.save_data(data)
 	
