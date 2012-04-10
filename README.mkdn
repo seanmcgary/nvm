@@ -48,9 +48,16 @@ Available commands:
 
 ```
 nvm <command> [command args]
+
+Available commands:
+
+	use			Select a version of NodeJS to use.
+	install		Install a version of NodeJS
+	list		List known, current, and installed versions
 ```
 
 ###nvm-use
+
 
 ###nvm-install
 
