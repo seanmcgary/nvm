@@ -26,10 +26,29 @@ Run the nvm_install script located in ```.nvm/bin/nvm_install```
 
 After running, make sure source your shells rc file!
 
+##Getting Started
+
+To install a version of node, simply run:
+
+```nvm install <nodejs version>```
+
+In this case, the version is a tag in the NodeJS repository. To view all of the versions, you can run:
+
+```nvm list known```
+
+This will list all known version tags in the NodeJS repository, highlighting the installed versions in yellow and the current version in green.
+
 
 ## Components
 
+All commands have an associated executable. The ```nvm``` binary is a simple interface that calls each of the executables to provide a uniform interface. Each of the executables is explained below.
+
 ### ```nvm```
+Available commands:
+
+```
+nvm <command> [command args]
+```
 
 ### ```nvm-use```
 
