@@ -43,15 +43,15 @@ This will list all known version tags in the NodeJS repository, highlighting the
 
 All commands have an associated executable. The ```nvm``` binary is a simple interface that calls each of the executables to provide a uniform interface. Each of the executables is explained below.
 
-### ```nvm```
+###nvm
 Available commands:
 
 ```
 nvm <command> [command args]
 ```
 
-### ```nvm-use```
+###nvm-use
 
-### ```nvm-install```
+###nvm-install
 
-### ```nvm-module-install```
+###nvm-module-install
