@@ -50,7 +50,7 @@ Available commands:
 nvm <command> [command args]
 
 Available commands:
-
+	help		Show the help menu
 	use			Select a version of NodeJS to use.
 	install		Install a version of NodeJS
 	list		List known, current, and installed versions
@@ -58,7 +58,16 @@ Available commands:
 
 ###nvm-use
 
+Select a version of NodeJS to use.
+
+```
+nvm-use <nodejs version>
+```
 
 ###nvm-install
 
-###nvm-module-install
+Install a version of NodeJS
+
+```
+nvm-install <nodejs version>
+```
