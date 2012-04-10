@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import sys
 import os
+import subprocess
 sys.path.append(os.environ['NVM_PATH'] + '/src/lib')
 
 import rc_parser
@@ -8,3 +9,7 @@ import rc_parser
 
 if __name__ == '__main__':
 	rc_parser.write_rc()
+
+	shell = os.environ['SHELL'].split("/")
+	shell = shell[len(shell) - 1]
+	subprocess.call("$SHELL && source ~/." + shell + "rc", shell=True)

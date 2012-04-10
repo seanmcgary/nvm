@@ -34,15 +34,20 @@ def set_version(tag, data):
 		module_symlink = "cd " + nvm_mod + ' && rm -rf current; ln -s ' + tag + ' current'
 	
 	subprocess.call(module_symlink, shell=True)
+	
+	node_lib_path = nvm_mod + '/current/lib';
+	if(os.path.exists(node_lib_path) != True):
+		subprocess.call('cd ' + nvm_mod + '/current && mkdir lib', shell=True)
 
 	#create modules/current/node_modules and modules/current/node
-	node_mod_path = nvm_mod + '/current/node_modules'
+	node_mod_path = node_lib_path + '/node_modules'
 	if(os.path.exists(node_mod_path) != True):
-		subprocess.call('cd ' + nvm_mod + '/current && mkdir node_modules', shell=True)
+		subprocess.call('cd ' + node_lib_path + ' && mkdir node_modules', shell=True)
 	
-	node_path = nvm_mod + '/current/node'
+	node_path = node_lib_path + '/node'
 	if(os.path.exists(node_path) != True):
-		subprocess.call('cd ' + nvm_mod + '/current && mkdir node', shell=True)
+		subprocess.call('cd ' + node_lib_path + ' && mkdir node', shell=True)
+
 
 	# check to see if /usr/local/lib/node_modules exists
 	lib_node_modules = '/usr/local/lib/node_modules'
@@ -53,13 +58,12 @@ def set_version(tag, data):
 	subprocess.call(sym_link_node_mod, shell=True)
 
 	# check to see if /usr/local/lib/node exists
-	lib_node = '/usr/local/lib/node'
-	sym_link_node = 'sudo ln -s ' + node_path + ' ' + lib_node
-	if(os.path.exists(lib_node) == True):
-		sym_link_node = 'sudo rm -rf ' + lib_node + '; ' + sym_link_node
+	#lib_node = '/usr/local/lib/node'
+	#sym_link_node = 'sudo ln -s ' + node_path + ' ' + lib_node
+	#if(os.path.exists(lib_node) == True):
+	#	sym_link_node = 'sudo rm -rf ' + lib_node + '; ' + sym_link_node
 
-	subprocess.call(sym_link_node, shell=True)
+	#subprocess.call(sym_link_node, shell=True)
 
-
-
+	
 	data['current_version'] = tag

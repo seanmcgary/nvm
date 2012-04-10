@@ -4,12 +4,12 @@ Easily manage version of Node.js as well as modules
 
 NOTE: Currently nvm will only work for a single user. Installing NodeJS and modules for the global machine and users is coming soon.
 
-##Requirements
+## Requirements
 
 - Python 2.7
 	- requests (available through easy_install an pip)
 
-##Installation
+## Installation
 
 Clone nvm to ~/.nvm
 
@@ -26,7 +26,7 @@ Run the nvm_install script located in ```.nvm/bin/nvm_install```
 
 After running, make sure source your shells rc file!
 
-##Getting Started
+## Getting Started
 
 To install a version of node, simply run:
 
@@ -43,7 +43,7 @@ This will list all known version tags in the NodeJS repository, highlighting the
 
 All commands have an associated executable. The ```nvm``` binary is a simple interface that calls each of the executables to provide a uniform interface. Each of the executables is explained below.
 
-###nvm
+### nvm
 Available commands:
 
 ```
@@ -56,7 +56,7 @@ Available commands:
 	list		List known, current, and installed versions
 ```
 
-###nvm-use
+### nvm-use
 
 Select a version of NodeJS to use.
 
@@ -64,7 +64,7 @@ Select a version of NodeJS to use.
 nvm-use <nodejs version>
 ```
 
-###nvm-install
+### nvm-install
 
 Install a version of NodeJS
 

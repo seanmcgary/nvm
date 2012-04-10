@@ -67,7 +67,7 @@ if __name__ == '__main__':
 
 	print colors.green("Building Nodejs...") + "\n"
 
-	make = "cd " + clone_path + " && ./configure && make"
+	make = "cd " + clone_path + " && ./configure && make && sudo make install"
 	if(subprocess.call(make, shell=True) != 0):
 		print colors.red("Failed to configure and make")
 		exit()

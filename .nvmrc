@@ -1,5 +1,6 @@
-export NVM_VERSIONS=/Users/seanmcgary/.nvm/versions
-export NVM_MODULES=/Users/seanmcgary/.nvm/modules
-export NODE_PATH=/Users/seanmcgary/.nvm/modules/current
-export NVM_NODE_PATH=/Users/seanmcgary/.nvm/modules/current
+export NVM_INSTALL=/usr/local/nvm
+export NVM_VERSIONS=$NVM_INSTALL/versions
+export NVM_MODULES=$NVM_INSTALL/modules
+export NVM_NODE_PATH=NVM_INSTALL/modules/current
 PATH=$PATH:/Users/seanmcgary/.nvm/bin:$NVM_VERSIONS/current:$NVM_VERSIONS/current/tools
+export NODE_PATH=$NVM_MODULES/current/lib/node_modules
