@@ -56,7 +56,7 @@ if __name__ == '__main__':
 	
 		symlink = ''
 	
-		version_manager.set_version(tag, data)
+		version_manager.create_env(tag, data)
 
 	print colors.green("Checking out tag " + tag + "...") + "\n"
 
@@ -72,11 +72,15 @@ if __name__ == '__main__':
 		print colors.red("Failed to configure and make")
 		exit()
 
+	version_manager.set_version(tag)
+
 	# if we're rebuilding, we want to make sure not to add the tag again
 	try:
 		data['installed_versions'].index(tag)
 	except:
 		data['installed_versions'].append(tag)
+
+	
 
 	data_loader.save_data(data)
 	

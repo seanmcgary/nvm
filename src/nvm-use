@@ -18,7 +18,8 @@ if __name__ == '__main__':
 	try:
 		data['installed_versions'].index(ver)
 
-		version_manager.set_version(ver, data)
+		version_manager.create_env(ver, data)
+		#version_manager.set_version(ver)
 
 		data_loader.save_data(data)
 

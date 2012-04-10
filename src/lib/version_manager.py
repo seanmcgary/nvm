@@ -6,10 +6,37 @@ import data_loader
 import colors
 
 
-def set_version(tag, data):
+def set_version(ver):
+	data = data_loader.load_data()
+
+	if(len(data['current_version']) == 0):
+		print colors.yellow("You need to install a version of NodeJS first.")
+		exit()
+	
+	try:
+		data['installed_versions'].index(ver)
+	except:
+		print colors.yellow(ver + " is not installed")
+		exit()
+	
+	
+	#remove the current binaries
+	subprocess.call("cd $NVM_BIN && rm *", shell=True)
+
+
+	# symlink node binary
+	installed_ver = os.environ['NVM_INSTALL'] + "/versions/current"
+	subprocess.call("ln -s $NVM_INSTALL/versions/current/node $NVM_BIN/node", shell=True)
+	
+	# now for npm 
+	subprocess.call("ln -s $NVM_INSTALL/versions/current/deps/npm/bin/npm $NVM_BIN/npm", shell=True)
+
+
+def create_env(tag, data):
 	
 	nvm_ver = os.environ['NVM_VERSIONS']
 	nvm_mod = os.environ['NVM_MODULES']
+	nvm_install = os.environ['NVM_INSTALL']
 	
 	# symlink the new tag to current in nvm_versions
 	if len(data['current_version']) > 0:
@@ -21,6 +48,9 @@ def set_version(tag, data):
 		print colors.red("Failed to make tag " + tag + " current")
 		exit()
 	
+	
+	if(os.path.exists(nvm_install + '/bin') != True):
+		subprocess.call("cd $NVM_INSTALL && mkdir bin", shell=True)
 
 	# add a directory for the modules and symlink it if it doesnt already exist
 	if(os.path.exists(nvm_mod + '/' + tag) != True):
