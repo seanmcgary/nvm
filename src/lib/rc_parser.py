@@ -25,7 +25,8 @@ def write_rc():
 	rc.write("export NVM_BIN=$NVM_INSTALL/bin\n")
 	rc.write("export NVM_NODE_PATH=NVM_INSTALL/modules/current\n")
 
-	rc.write("PATH=$NVM_BIN:$NVM_PATH/bin:$NVM_VERSIONS/current:$NVM_VERSIONS/current/tools:$PATH\n")
+	rc.write("PATH=$NVM_BIN:$NVM_PATH/bin:$PATH\n")
+
 
 	rc.write("export NODE_PATH=$NVM_MODULES/current/lib/node_modules\n")
 	
