@@ -9,6 +9,7 @@ import data_loader
 import colors
 import github
 import version_manager
+import rc_parser
 
 
 if __name__ == '__main__':
@@ -81,4 +82,3 @@ if __name__ == '__main__':
 	data_loader.save_data(data)
 
 	version_manager.set_version(tag)
-	

@@ -4,7 +4,7 @@ import subprocess
 
 import data_loader
 import colors
-
+import rc_parser
 
 def set_version(ver):
 	data = data_loader.load_data()
@@ -19,17 +19,28 @@ def set_version(ver):
 		print colors.yellow(ver + " is not installed")
 		exit()
 	
-	
+	nvm_bin = os.environ['NVM_BIN']
 	#remove the current binaries
-	subprocess.call("cd $NVM_BIN && rm *", shell=True)
+	if(os.path.exists(nvm_bin + '/node')):
+		pid = subprocess.Popen("cd " + nvm_bin + " && rm node", shell=True, executable=os.environ['SHELL'])
+		subprocess.Popen.wait(pid)
 
+	
+	if(os.path.exists(nvm_bin + '/npm')):
+		pid = subprocess.Popen("cd " + nvm_bin + " && rm npm", shell=True, executable=os.environ['SHELL'])
+		subprocess.Popen.wait(pid)
 
 	# symlink node binary
 	installed_ver = os.environ['NVM_INSTALL'] + "/versions/current"
-	subprocess.call("ln -s $NVM_INSTALL/versions/current/node $NVM_BIN/node", shell=True)
+	pid_node = subprocess.Popen("ln -s $NVM_INSTALL/versions/current/node $NVM_BIN/node", shell=True, executable=os.environ['SHELL'])
+
+	subprocess.Popen.wait(pid_node)
 	
 	# now for npm 
-	subprocess.call("ln -s $NVM_INSTALL/versions/current/deps/npm/bin/npm $NVM_BIN/npm", shell=True)
+	pid_npm = subprocess.Popen("ln -s $NVM_INSTALL/versions/current/deps/npm/bin/npm $NVM_BIN/npm", shell=True, executable=os.environ['SHELL'])
+	subprocess.Popen.wait(pid_npm)
+
+	rc_parser.source_rc()
 
 
 def create_env(tag, data):

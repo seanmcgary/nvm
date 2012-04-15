@@ -1,6 +1,8 @@
 export NVM_INSTALL=/usr/local/nvm
 export NVM_VERSIONS=$NVM_INSTALL/versions
 export NVM_MODULES=$NVM_INSTALL/modules
+export NVM_BIN=$NVM_INSTALL/bin
 export NVM_NODE_PATH=NVM_INSTALL/modules/current
-PATH=$PATH:/Users/seanmcgary/.nvm/bin:$NVM_VERSIONS/current:$NVM_VERSIONS/current/tools
+PATH=$NVM_BIN:$NVM_PATH/bin:$PATH
 export NODE_PATH=$NVM_MODULES/current/lib/node_modules
+echo "YAY NVMRC"

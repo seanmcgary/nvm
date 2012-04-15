@@ -1,0 +1,38 @@
+#!/usr/bin/python
+import sys
+import os
+import subprocess
+
+os.system("export NVM_PATH=$HOME/.nvm")
+sys.path.append(os.environ['NVM_PATH'] + '/src/lib')
+
+import rc_parser
+import colors
+
+if __name__ == '__main__':
+	
+	shell = os.environ['SHELL'].split("/")[-1]
+	#print shell
+	#subprocess.call('echo "export NVM_PATH=\$HOME/.nvm" >> ~/.' + shell + 'rc', shell=True)
+#	subprocess.call('echo "source \$NVM_PATH/.nvmrc" >> ~/.' + shell + 'rc', shell=True)
+	
+#	rc_parser.write_rc()
+
+#	rc_parser.source_rc()
+
+	print colors.yellow("Setting up paths...")
+	if(os.path.exists(os.environ['NVM_INSTALL']) != True):
+		subprocess.call("mkdir " + os.environ['NVM_INSTALL'], shell=True)
+		print colors.green("\tmkdir " + os.environ['NVM_INSTALL'])
+	
+	if(os.path.exists(os.environ['NVM_BIN']) != True):
+		subprocess.call("cd " + os.environ['NVM_INSTALL'] + " && mkdir bin", shell=True)
+		print colors.green("\tcd " + os.environ['NVM_INSTALL'] + " && mkdir bin")
+
+	if(os.path.exists(os.environ['NVM_VERSIONS']) != True):
+		subprocess.call("cd " + os.environ['NVM_INSTALL'] + " && mkdir versions", shell=True)
+		print colors.green("\tcd " + os.environ['NVM_INSTALL'] + " && mkdir versions")
+
+	if(os.path.exists(os.environ['NVM_MODULES']) != True):
+		subprocess.call("cd " + os.environ['NVM_INSTALL'] + " && mkdir modules", shell=True)
+		print colors.green("\tcd " + os.environ['NVM_INSTALL'] + " && mkdir modules")
